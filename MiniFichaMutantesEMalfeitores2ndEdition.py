@@ -2,7 +2,7 @@ class Character:
     def __init__(self,name,alt_id,power_level,strenght,dexterity,constitution, intelligence, wisdom, charism
     ,resistance, fortitude, reflex, willpower
     ,mod_str = None , mod_dex = None, mod_int = None, mod_wis = None, mod_char = None,
-    altura = None, tamanho = None, peso = None,
+    altura = None, tamanho = None, peso = 0,
     pontos_poder = None, pontos_poder_inicial = None):
         self.name = name
         self.alt_id = alt_id
@@ -12,6 +12,7 @@ class Character:
         
         self.altura = altura
         self.tamanho = tamanho
+        self.peso = peso
         
         self.strenght = strenght
         self.mod_str = (self.strenght - 10) //2
@@ -36,7 +37,7 @@ class Character:
         self.reflex = reflex
         self.willpower = willpower
 
-    
+###### CONFORME TABELA DE TAMANHO PG 34 #######    
     def calcula_tamanho(self):
         verifica_alt = self.altura 
         verifica_peso = self.peso
@@ -66,32 +67,111 @@ class Character:
             
         elif verifica_alt >0.15 and verifica_alt <=0.3:
             self.tamanho = 'DIMINUTO'
-            mod_atk_tam = 12
-            mod_def_tam = 12
-            mod_gra_tam = -20
-            mod_ste_tam = 20
-            mod_itm_tam = -10
-            space = 0.75
+            mod_atk_tam = 4
+            mod_def_tam = 4
+            mod_gra_tam = -12 
+            mod_ste_tam = 12
+            mod_itm_tam = -6
+            space = 0.03
             range_alcance = 0
-            cap_carga = cap_carga * (1.0/12.0)
+            cap_carga = cap_carga * (1.0/4.0)
             custo = 12       
         
         elif verifica_alt > 0.3 and verifica_alt <= 0.6:
             self.tamanho = 'MINIMO'
+            mod_atk_tam = 2
+            mod_def_tam = 2
+            mod_gra_tam = -8
+            mod_ste_tam = 8
+            mod_itm_tam = -4
+            space = 0.075
+            range_alcance = 0
+            cap_carga = cap_carga * (1.0/2.0)
+            custo = 8   
+            
         elif verifica_alt >0.6 and verifica_alt <= 1.2:
             self.tamanho = 'PEQUENO'
+            mod_atk_tam = 1
+            mod_def_tam = 1
+            mod_gra_tam = -4
+            mod_ste_tam = 4
+            mod_itm_tam = -2
+            space = 1.5
+            range_alcance = 1.5
+            cap_carga = cap_carga * (3.0/4.0)
+            custo = 4   
+            
         elif verifica_alt >1.2 and verifica_alt <= 2.4:
             self.tamanho = 'MEDIO'
+            mod_atk_tam = 0
+            mod_def_tam = 0
+            mod_gra_tam = 0
+            mod_ste_tam = 0
+            mod_itm_tam = 0
+            space = 1.5
+            range_alcance = 1.5
+            cap_carga = cap_carga * 1
+            custo = 0
+            
         elif verifica_alt > 2.4 and verifica_alt <= 4.8:
             self.tamanho= 'GRANDE'
+            mod_atk_tam = -1
+            mod_def_tam = -1
+            mod_gra_tam = 4
+            mod_ste_tam = -4
+            mod_itm_tam = 2
+            space = 3
+            range_alcance = 3
+            cap_carga = self.strenght + 5
+            custo = 12   
+            
         elif verifica_alt >4.8 and verifica_alt <= 9.6:
             self.tamanho = 'ENORME'
+            mod_atk_tam = -2
+            mod_def_tam = -2
+            mod_gra_tam = 8
+            mod_ste_tam = -8
+            mod_itm_tam = 4
+            space = 4.5
+            range_alcance = 3
+            cap_carga = self.strenght + 10
+            custo = 24  
+            
         elif verifica_alt > 9.6 and verifica_alt <= 19.2:
             self.tamanho = 'DESCOMUNAL'
+            mod_atk_tam = -4
+            mod_def_tam = -4
+            mod_gra_tam = 12
+            mod_ste_tam = -12
+            mod_itm_tam = 6
+            space = 6
+            range_alcance = 4.5
+            cap_carga = self.strenght + 15
+            custo = 36 
+            
         elif verifica_alt >19.2 and verifica_alt <= 38.4:
             self.tamanho = 'COLOSSAL'
+            mod_atk_tam = -8
+            mod_def_tam = -8
+            mod_gra_tam = 16
+            mod_ste_tam = -16
+            mod_itm_tam = 8
+            space = 9
+            range_alcance = 4.5
+            cap_carga = self.strenght + 20
+            custo = 48  
+            
         elif verifica_alt > 38.4:
             self.tamanho = 'INCRIVEL'
+            mod_atk_tam = -12
+            mod_def_tam = -12
+            mod_gra_tam = 20
+            mod_ste_tam = -20
+            mod_itm_tam = 10
+            space = 12
+            range_alcance = 6
+            cap_carga = self.strenght + 25
+            custo = 60
         else:
             print('TAMANHO INVALIDO')
     
