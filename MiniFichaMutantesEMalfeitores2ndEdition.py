@@ -47,11 +47,35 @@ class Character:
             mod_gra_tam = -20
             mod_ste_tam = 20
             mod_itm_tam = -10
+            space = 0.0075
+            range_alcance = 0
+            cap_carga = cap_carga * (1.0/16.0)
+            custo = 20
             
         elif verifica_alt > 0.075 and verifica_alt <= 0.15:
             self.tamanho = 'INFIMO'
+            mod_atk_tam = 8
+            mod_def_tam = 8
+            mod_gra_tam = -16
+            mod_ste_tam = 16
+            mod_itm_tam = -8
+            space = 0.015
+            range_alcance = 0
+            cap_carga = cap_carga * (1.0/8.0)
+            custo = 16
+            
         elif verifica_alt >0.15 and verifica_alt <=0.3:
             self.tamanho = 'DIMINUTO'
+            mod_atk_tam = 12
+            mod_def_tam = 12
+            mod_gra_tam = -20
+            mod_ste_tam = 20
+            mod_itm_tam = -10
+            space = 0.75
+            range_alcance = 0
+            cap_carga = cap_carga * (1.0/12.0)
+            custo = 12       
+        
         elif verifica_alt > 0.3 and verifica_alt <= 0.6:
             self.tamanho = 'MINIMO'
         elif verifica_alt >0.6 and verifica_alt <= 1.2:
