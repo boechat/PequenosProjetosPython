@@ -2,7 +2,7 @@ class Character:
     def __init__(self,name,alt_id,power_level,strenght,dexterity,constitution, intelligence, wisdom, charism
     ,resistance, fortitude, reflex, willpower
     ,mod_str = None , mod_dex = None, mod_int = None, mod_wis = None, mod_char = None,
-    altura = None, tamanho = None, peso = 0,
+    altura = None, tamanho = None, peso = 0, cap_carga = 0,
     pontos_poder = None, pontos_poder_inicial = None):
         self.name = name
         self.alt_id = alt_id
@@ -13,6 +13,7 @@ class Character:
         self.altura = altura
         self.tamanho = tamanho
         self.peso = peso
+        self.cap_carga = cap_carga
         
         self.strenght = strenght
         self.mod_str = (self.strenght - 10) //2
@@ -37,10 +38,44 @@ class Character:
         self.reflex = reflex
         self.willpower = willpower
 
+
+    def capacidade_carga(self):
+        nivel_forca = self.strenght
+        carga_max = 10
+        carga_leve = 1.5 
+        carga_med = 3
+        carga_pes = 5
+        empurra = 25
+        
+        if nivel_forca > 0 and nivel_forca <= 10:
+            carga_max = nivel_forca * 10
+            carga_leve = carga_leve + 1.5
+            
+            if nivel_forca % 2 == 0:
+                carga_med = carga_med + 3.5
+            else:
+                carga_med = carga_med + 2.5
+            
+            carga_pes = carga_pes + 5
+        
+        elif nivel_forca > 10 and nivel_forca <= 12:
+            carga_max = 
+            carga_leve = carga_leve + 1.5
+            
+            if nivel_forca % 2 == 0:
+                carga_med = carga_med + 3.5
+            else:
+                carga_med = carga_med + 2.5
+            
+            carga_pes = carga_pes + 5
+            
+        
+
 ###### CONFORME TABELA DE TAMANHO PG 34 #######    
     def calcula_tamanho(self):
         verifica_alt = self.altura 
         verifica_peso = self.peso
+        cap_carga = 
         if (verifica_alt > 0 and verifica_alt <= 0.075) or (verifica_peso > 0 and verifica_peso <= 0.03):
             self.tamanho = 'MINUSCULO'
             mod_atk_tam = 12
